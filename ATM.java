@@ -12,14 +12,19 @@ public class ATM{
   synchronized void printMoney(){
     int total = 0;
     for(int i=0; i<SIZE; i++){
+      System.out.println("total:"+account[i]);
+    }
+    for(int i=0; i<SIZE; i++){
       total += account[i];
     }
     System.out.println("total:"+total);
   }
 
-  synchronized void move(int from, int to, int money){
-    account[from] -= money;
-    account[to] += money;
+  synchronized void move(int from, int to, int money) {
+    if(account[from]>=money){
+      account[from] -= money;
+      account[to] += money;
+    }
   }
 
   public static void main(String args[]){
